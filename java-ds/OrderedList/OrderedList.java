@@ -65,4 +65,36 @@ class OrderedList <T extends Comparable<T>> {
         return array.remove(index);
     }
 
+    /**
+     * Merge another ordered list with the current instance.
+     */
+    public void merge(OrderedList<T> otherList) {
+        int i = 0, j = 0;
+
+        // Create a new list to hold the merged result
+        ArrayList<T> mergedArray = new ArrayList<T>(this.array.size() + otherList.array.size());
+
+        // Use two-finger walk algorithm to merge
+        while (i < this.array.size() && j < otherList.array.size()) {
+            if (this.array.get(i).compareTo(otherList.array.get(j)) <= 0) {
+                mergedArray.add(this.array.get(i++));
+            } else {
+                mergedArray.add(otherList.array.get(j++));
+            }
+        }
+
+        // If there are remaining elements in this array, add them to mergedArray
+        while (i < this.array.size()) {
+            mergedArray.add(this.array.get(i++));
+        }
+
+        // If there are remaining elements in otherList, add them to mergedArray
+        while (j < otherList.array.size()) {
+            mergedArray.add(otherList.array.get(j++));
+        }
+
+        // Replace the old array with the merged array
+        this.array = mergedArray;
+    }
+
 }
