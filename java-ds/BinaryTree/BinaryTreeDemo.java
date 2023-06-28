@@ -13,6 +13,16 @@ public class BinaryTreeDemo {
         D.makeRoot("D");
         E.makeRoot("E");
         F.makeRoot("F");
+
+        /*
+         *        A
+         *       / \
+         *      B   C
+         *     / \
+         *    D   E
+         *   /
+         *  F
+         */
         
         A.setLeft(B);
         A.setRight(C);
@@ -30,6 +40,10 @@ public class BinaryTreeDemo {
 
         System.out.print("Postorder:\t");
         A.postOrder();
+        System.out.println();
+
+        System.out.print("Levelorder:\t");
+        A.levelOrder();
         System.out.println();
     }
 }
